@@ -1,0 +1,75 @@
+# =============================== SERVER ===============================
+server.port=8080
+server.servlet.context-path=/
+
+# =============================== SPRING DATASOURCE (PostgreSQL) ===============================
+spring.datasource.url=jdbc:postgresql://localhost:5432/parc
+spring.datasource.username=postgres
+spring.datasource.password=13040185
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# =============================== JPA / HIBERNATE ===============================
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+spring.jpa.open-in-view=false
+
+# =============================== LOGGING ===============================
+logging.level.org.springframework=INFO
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.orm.jdbc.bind=TRACE
+logging.level.com.parc=DEBUG
+
+# =============================== JSON CONFIG ===============================
+spring.jackson.date-format=yyyy-MM-dd
+spring.jackson.time-zone=Africa/Tunis
+
+# =============================== JWT ===============================
+jwt.secret=fleetManagementSecretKeyForJWTTokenGenerationAndValidation2024WithExtraLengthToMeet512BitsRequirementForHS512Algorithm
+jwt.expiration=86400000
+
+# =============================== MAIL (Gmail SMTP) ===============================
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=votre-email@gmail.com
+spring.mail.password=votre-app-password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.connectiontimeout=5000
+spring.mail.properties.mail.smtp.timeout=5000
+spring.mail.properties.mail.smtp.writetimeout=5000
+app.mail.from=Fleet Management <votre-email@gmail.com>
+
+# =============================== OTP CONFIG ===============================
+otp.expiration.minutes=10
+otp.length=6
+otp.max.attempts=5
+otp.lockout.minutes=15
+
+# =============================== GROQ AI CONFIG ===============================
+# Groq API Configuration (compatible with OpenAI API format)
+spring.ai.openai.api-key=${GROQ_API_KEY:your-groq-api-key-here}
+spring.ai.openai.base-url=https://api.groq.com/openai/v1
+spring.ai.openai.chat.options.model=llama-3.3-70b-versatile
+spring.ai.openai.chat.options.temperature=0.7
+spring.ai.openai.chat.options.max-tokens=1024
+
+# =============================== FIREBASE ===============================
+# Firebase Admin SDK utilise le fichier service-account-key.json placé dans src/main/resources
+
+# Logs supplémentaires (optionnel)
+logging.level.org.hibernate.tool.hbm2ddl=DEBUG
+logging.level.org.springframework.web=DEBUG
+logging.level.org.springframework.security=DEBUG
+spring.main.allow-circular-references=true
+spring.jackson.serialization.write-dates-as-timestamps=false
+spring.jackson.deserialization.adjust-dates-to-context-time-zone=false
+
+# =============================== OLLAMA AI CONFIG ===============================
+# Configuration pour l'assistant IA local avec Ollama
+ollama.url=http://localhost:11434
+ollama.model=mistral
+# Autres modèles disponibles: neural-chat, zephyr, llama2

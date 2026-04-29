@@ -1,0 +1,32 @@
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+
+function ChefMissionsForm() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ titre: '', destination: '', date: '', heure: '', chauffeurId: '', vehiculeId: '', description: '' });
+  const [loading, setLoading] = useState(false);
+  const isEditMode = !!id;
+
+  useEffect(() => {
+    if (isEditMode) { /* Charger mission existante */ }
+  }, [id]);
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleSubmit = async (e) => { e.preventDefault(); setLoading(true); setTimeout(() => { setLoading(false); navigate('/chef/missions'); }, 1000); };
+
+  return (
+    <div className="user-form-container">
+      <div className="page-header"><h2>{isEditMode ? 'Modifier' : 'Créer'} une mission</h2><button className="btn-secondary" onClick={() => navigate('/chef/missions')}>← Retour</button></div>
+      <form onSubmit={handleSubmit} className="user-form">
+        <div className="form-row"><div className="form-group"><label>Titre *</label><input type="text" name="titre" value={formData.titre} onChange={handleChange} required /></div><div className="form-group"><label>Destination *</label><input type="text" name="destination" value={formData.destination} onChange={handleChange} required /></div></div>
+        <div className="form-row"><div className="form-group"><label>Date *</label><input type="date" name="date" value={formData.date} onChange={handleChange} required /></div><div className="form-group"><label>Heure *</label><input type="time" name="heure" value={formData.heure} onChange={handleChange} required /></div></div>
+        <div className="form-row"><div className="form-group"><label>Chauffeur *</label><select name="chauffeurId" value={formData.chauffeurId} onChange={handleChange} required><option value="">Sélectionner</option><option value="1">Karim Ben Salah</option><option value="2">Mohamed Ali</option></select></div><div className="form-group"><label>Véhicule *</label><select name="vehiculeId" value={formData.vehiculeId} onChange={handleChange} required><option value="">Sélectionner</option><option value="1">TN-123-ABC - Renault</option><option value="2">TN-456-DEF - Peugeot</option></select></div></div>
+        <div className="form-group"><label>Description</label><textarea name="description" rows="4" value={formData.description} onChange={handleChange}></textarea></div>
+        <div className="form-actions"><button type="submit" disabled={loading} className="btn-primary">{loading ? 'Enregistrement...' : (isEditMode ? 'Modifier' : 'Créer')}</button><button type="button" onClick={() => navigate('/chef/missions')} className="btn-secondary">Annuler</button></div>
+      </form>
+    </div>
+  );
+}
+
+export default ChefMissionsForm;

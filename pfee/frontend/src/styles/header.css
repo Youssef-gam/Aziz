@@ -1,0 +1,85 @@
+/* ========== Header - Style AGIL ENERGY ========== */
+.header {
+  background: #1A1A1A;
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-bottom: 3px solid #F5B81B;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.header-title h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #F5B81B;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.header-subtitle {
+  font-size: 13px;
+  color: #B0B0B0;
+  font-weight: 400;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.date-display {
+  font-size: 13px;
+  color: #F5B81B;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: 500;
+  border: 1px solid rgba(245, 184, 27, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+  
+  .logo-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .header-title h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .header-subtitle {
+    text-align: center;
+  }
+  
+  .header-right {
+    width: 100%;
+    justify-content: center;
+  }
+}
